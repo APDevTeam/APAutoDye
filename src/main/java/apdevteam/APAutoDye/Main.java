@@ -93,14 +93,14 @@ public class Main extends JavaPlugin {
                         byte woolAmount = (byte) player.getInventory().getItemInMainHand().getAmount(); //Find out how much wool the player is holding
                         ItemStack woolColor = new ItemStack(Material.WOOL, woolAmount, ColorID); //Create the new wool type that we need to give the player as a replacement
                         player.getInventory().setItemInMainHand(woolColor); //Set the current wool to our new dyed stack
-                        sendMessage(sender, String.format("Wool color changed to &%s%s&6!", ColorCodes[ColorID], changeColor)); //Output our wool color that we changed to
+                        sendMessage(sender, String.format("You dyed the wool &%s%s&6!", ColorCodes[ColorID], changeColor)); //Output our wool color that we changed to
                         return true;
                     }
                     if (player.getInventory().getItemInMainHand().isSimilar(clay)) {
                         byte clayAmount = (byte) player.getInventory().getItemInMainHand().getAmount(); //Find out how much clay the player is holding
                         ItemStack clayColor = new ItemStack(Material.STAINED_CLAY, clayAmount, ColorID); // Create the new clay type that we need to give the player as a replacement
                         player.getInventory().setItemInMainHand(clayColor); //Set the current clay to our new dyed stack
-                        sendMessage(sender, String.format("Clay color changed to &%s%s&6!", ColorCodes[ColorID], changeColor)); //Output our clay color that we changed to
+                        sendMessage(sender, String.format("You dyed the clay &%s%s&6!", ColorCodes[ColorID], changeColor)); //Output our clay color that we changed to
                         return true;
                     }
 
@@ -121,7 +121,7 @@ public class Main extends JavaPlugin {
     private void sendMessage(CommandSender sender, String msg){ //Send message to either player or console, strings only (no lists)
         if(sender instanceof Player){ //If the sender is a player
             Player p = (Player) sender; //Initialize the player
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&',ChatColor.GREEN+"[APAutoDye] " + ChatColor.GOLD + msg)); //Send the message intended for the player
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',ChatColor.GOLD + msg)); //Send the message intended for the player
         }
         else //If the sender isn't a player, it must be the console requesting the info
         {
