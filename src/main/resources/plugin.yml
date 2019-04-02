@@ -1,0 +1,10 @@
+name: APAutoDye
+main: ap.apautodye.apdevteam.Main
+version: 1.0.0
+authors: [Foxtrot2400]
+depend: [Vault]
+commands:
+   dye:
+       description: Dyes wool or clay in your hand to a specified color
+       usage: /dye <color>
+       permission: APDye.use
