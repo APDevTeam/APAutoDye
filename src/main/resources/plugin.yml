@@ -1,7 +1,7 @@
 name: APAutoDye
 main: ap.apautodye.apdevteam.Main
-version: 1.0.0
-authors: [Foxtrot2400]
+version: 1.0.0-WHITE-WOOL-PATCH
+authors: [Foxtrot2400, drfiveminusmint]
 depend: [Vault]
 commands:
    dye:
