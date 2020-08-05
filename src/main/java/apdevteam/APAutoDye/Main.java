@@ -56,6 +56,11 @@ public class Main extends JavaPlugin {
                 sendMessage(sender,"This command must be run by a player!"); // If it isn't a player using this command, tell them they can't
                 return true;
             }
+
+            if(args.length < 1) {
+                return false;
+            }
+
             if(args[0].equalsIgnoreCase("light")){ // We know that the only time there will be two words is if there's "light" before the wool color. So, if "light" is the first argument, we know we need to use two arguments rather than one for "light gray" or whatever
                 x = 0; //Reset our counter to zero...just in case.
                 colorString = args[0]+args[1]; //Setup our string to use both arguments needed
@@ -91,6 +96,10 @@ public class Main extends JavaPlugin {
                     ItemStack clay = new ItemStack(Material.STAINED_CLAY, 1, (byte) x); //Create our item types for wool and clay
                     if (player.getInventory().getItemInMainHand().isSimilar(wool)) { //isSimiliar checks if it is the same item type (exact to color), but doesn't care about how many are there
                         byte woolAmount = (byte) player.getInventory().getItemInMainHand().getAmount(); //Find out how much wool the player is holding
+                        if(ColorID == 0) {
+                            sendMessage(sender, "Dyeing wool white is currently disabled.");
+                            return true;
+                        }
                         ItemStack woolColor = new ItemStack(Material.WOOL, woolAmount, ColorID); //Create the new wool type that we need to give the player as a replacement
                         player.getInventory().setItemInMainHand(woolColor); //Set the current wool to our new dyed stack
                         sendMessage(sender, String.format("You dyed the wool &%s%s&6!", ColorCodes[ColorID], changeColor)); //Output our wool color that we changed to
