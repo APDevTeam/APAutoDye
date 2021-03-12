@@ -19,11 +19,11 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package -T 1C --file pom.xml
     - name: Stage jar
       run: mkdir staging && cp target/APAutoDye*.jar staging
     - name: Rename jar
-      run: mv staging/Beaming*.jar staging/APAutoDye_$GITHUB_SHA.jar
+      run: mv staging/APAutoDye*.jar staging/APAutoDye_$GITHUB_SHA.jar
     - name: Upload jar
       uses: actions/upload-artifact@v2
       with:
